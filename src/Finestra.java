@@ -1,4 +1,4 @@
-package RPG;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
@@ -119,7 +119,7 @@ public class Finestra extends JFrame {
 
 	public char getActualChar() {
 		char tempc = actualChar;
-		actualChar = '0';
+		actualChar = 0;
 		return tempc;
 	}
 
