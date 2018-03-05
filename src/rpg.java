@@ -44,9 +44,10 @@ public class rpg {
 	}
 
 	public static void doStuff() {
-
+		win = false;
 		movement();
 		t.dibuixa(MapaCaminar);
+
 	}
 
 	private static void Map1() {
@@ -254,7 +255,7 @@ public class rpg {
 			}
 			break;
 		case 'a':
-			if (MapaCaminar[x][y - 1] == 0 || MapaCaminar[x - 1][y] == 1) {
+			if (MapaCaminar[x - 1][y] == 0 || MapaCaminar[x - 1][y] == 1) {
 				MapaCaminar[x][y] = memoria;
 				memoria = MapaCaminar[x][y - 1];
 				MapaCaminar[x][y - 1] = 4;
@@ -341,13 +342,22 @@ public class rpg {
 		}
 
 		char m;
-		
+
 		while ((m = ventana.getActualChar()) == 0) {
+			{
+
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+			}
 
 		}
 
 		int opmagia = Character.getNumericValue(m);
-		
+
 		magic magiasel = player.magias.get(opmagia);
 
 		if (m == 9) {
@@ -363,7 +373,7 @@ public class rpg {
 			} else {
 
 				System.out.println("HP of monster" + ell.get(select).name + " : " + ell.get(select).hp);
-				int newhp = damagedone(magmod(0,0), ell.get(select).res, ell.get(select).hp);
+				int newhp = damagedone(magmod(0, 0), ell.get(select).res, ell.get(select).hp);
 				ell.get(select).hp = newhp;
 				System.out.println("HP of monster" + ell.get(select).name + " : " + ell.get(select).hp);
 				if (ell.get(select).hp <= 0) {
@@ -376,7 +386,7 @@ public class rpg {
 				}
 
 			}
-			
+
 		} else
 			for (int j = 0; j < play.size(); j++) {
 				System.out.println(j + play.get(j).name);
